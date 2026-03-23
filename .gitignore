@@ -35,3 +35,10 @@ dist/
 
 # test env
 test/.venv/*
+
+# Claude Code ephemeral state
+.claude/settings.local.json
+.claude/.credentials.json
+.claude/cache/
+.claude/todos/
+.claude/plans/
