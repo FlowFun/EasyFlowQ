@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python main.py*)",
+      "Bash(python -m pytest*)",
+      "Bash(pip install*)",
+      "Bash(git *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(find *)"
+    ],
+    "deny": []
+  },
+  "env": {
+    "QT_QPA_PLATFORM": "offscreen"
+  }
+}
