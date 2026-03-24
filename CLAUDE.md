@@ -195,3 +195,32 @@ format, main window layout), **open a GitHub Issue before coding**:
 - Feature branches: `feature/<short-name>` (e.g., `feature/contour-plot`)
 - Bug fixes: `fix/<issue-number>-<short-name>`
 - Always branch from the latest `pyside6` branch of the upstream repo
+
+## Workflow de contribution upstream (PRs propres)
+
+### Principe
+Les PRs vers `ym3141/EasyFlowQ` doivent être propres (aucun fichier de config Claude Code ni fichier personnel).
+On utilise `git worktree` + symlinks pour avoir un répertoire de travail séparé par PR,
+tout en gardant accès aux fichiers de config via des liens symboliques.
+
+### Fichiers personnels (exclus des PRs)
+`.claude/`, `CLAUDE.md`, `specs.md`, `PLAN_GUI_KALUZA.md`
+Cette liste est maintenue dans la variable `PERSONAL_FILES` du script `scripts/new-pr-worktree.sh`.
+
+### Commandes
+
+- Créer un worktree pour une nouvelle PR :
+  `./scripts/new-pr-worktree.sh feature/nom-de-la-feature`
+
+- Lister les worktrees PR actifs :
+  `./scripts/list-pr-worktrees.sh`
+
+- Nettoyer après merge :
+  `./scripts/remove-pr-worktree.sh feature/nom-de-la-feature`
+  `./scripts/remove-pr-worktree.sh feature/nom-de-la-feature --delete-branch`
+
+### Règles importantes
+- Ne JAMAIS commiter `.claude/`, `CLAUDE.md`, `specs.md` ou `PLAN_GUI_KALUZA.md` dans un worktree PR.
+- Ces fichiers sont présents via symlinks et exclus via `.git/info/exclude`.
+- Toujours travailler depuis le worktree PR (pas depuis `main`) quand on développe pour une PR upstream.
+- Les symlinks pointent vers le worktree principal : si tu modifies `CLAUDE.md` sur `main`, le changement est immédiatement visible dans tous les worktrees PR.
