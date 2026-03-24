@@ -2,7 +2,7 @@
 
 **Statut**: Accepte
 **Date**: 2026-03-23
-**Decideurs**: Equipe FlowFun & Claude Code
+**Decideurs**: Equipe a-mimoun & Claude Code
 
 ---
 
